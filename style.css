@@ -1,0 +1,277 @@
+/* ===============================
+   Bharat.io – Global Styles
+   Apple-inspired clean design
+================================ */
+
+:root {
+  --blue: #2563eb;
+  --blue-light: #e8f0ff;
+  --text-dark: #0f172a;
+  --text-light: #475569;
+  --border: #e5e7eb;
+  --bg-light: #f8fafc;
+  --white: #ffffff;
+  --radius: 14px;
+}
+
+/* RESET */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg-light);
+  color: var(--text-dark);
+  line-height: 1.7;
+}
+
+/* ===============================
+   CONTAINERS
+================================ */
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+.section {
+  padding: 80px 0;
+}
+
+.section.light {
+  background: var(--white);
+}
+
+/* ===============================
+   NAVBAR
+================================ */
+
+.navbar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 18px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--blue);
+}
+
+.logo span {
+  color: var(--text-dark);
+}
+
+nav a {
+  margin-left: 22px;
+  text-decoration: none;
+  font-size: 15px;
+  color: var(--text-light);
+  font-weight: 500;
+}
+
+nav a:hover {
+  color: var(--blue);
+}
+
+.btn-small {
+  padding: 8px 14px;
+  border-radius: 10px;
+  background: var(--blue);
+  color: white !important;
+}
+
+/* ===============================
+   HERO
+================================ */
+
+.hero {
+  background: linear-gradient(
+    180deg,
+    var(--blue-light),
+    var(--bg-light)
+  );
+  padding: 100px 20px;
+}
+
+.hero-content {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+}
+
+.hero h1 {
+  font-size: 44px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  letter-spacing: -0.5px;
+}
+
+.hero p {
+  font-size: 18px;
+  color: var(--text-light);
+  max-width: 650px;
+  margin: auto;
+}
+
+.hero-actions {
+  margin-top: 35px;
+}
+
+.btn-primary {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  background: var(--blue);
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 12px;
+}
+
+.btn-primary:hover {
+  opacity: 0.9;
+}
+
+.btn-secondary {
+  display: inline-block;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-dark);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* ===============================
+   HEADINGS
+================================ */
+
+h2 {
+  font-size: 34px;
+  margin-bottom: 25px;
+  letter-spacing: -0.3px;
+}
+
+h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   TEXT
+================================ */
+
+p {
+  font-size: 16px;
+  color: var(--text-light);
+  margin-bottom: 16px;
+}
+
+/* ===============================
+   STEPS
+================================ */
+
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+.step {
+  background: var(--white);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+.step-number {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: var(--blue-light);
+  color: var(--blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+/* ===============================
+   FEATURES
+================================ */
+
+.features {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 30px;
+}
+
+.feature-card {
+  background: var(--bg-light);
+  padding: 30px;
+  border-radius: var(--radius);
+  border: 1px solid var(--border);
+}
+
+/* ===============================
+   FOOTER
+================================ */
+
+.footer {
+  background: var(--white);
+  border-top: 1px solid var(--border);
+  padding: 40px 20px;
+  text-align: center;
+}
+
+.footer p {
+  font-size: 14px;
+  color: var(--text-light);
+}
+
+.footer .small {
+  margin-top: 6px;
+  font-size: 13px;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 28px;
+  }
+
+  nav a {
+    margin-left: 14px;
+  }
+}
