@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Link For You – QR Vehicle Contact System</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<!-- PWA Manifest -->
+<link rel="manifest" href="./manifest.json">
+<meta name="theme-color" content="#8A1538">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<style>
+/* ============================================
+   LINK FOR YOU — PREMIUM UI
+   Maroon × Cream × White
+============================================ */
+:root {
+  --maroon:       #8A1538;
+  --maroon-d:     #6e102d;
+  --maroon-light: rgba(138,21,56,0.07);
+  --maroon-glow:  rgba(138,21,56,0.18);
+  --cream:        #FAF7F4;
+  --cream-2:      #F2EDE8;
+  --white:        #ffffff;
+  --text:         #1A1A1A;
+  --muted:        #6B6B6B;
+  --border:       #E8E0D8;
+}
+
+*, *::before, *::after {
+  margin: 0; padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.65;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { max-width: 100%; display: block; }
+
+/* ── NAVBAR ── */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255,255,255,0.96);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  box-shadow: 0 2px 20px rgba(0,0,0,0.04);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 24px;
+  height: 64px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  text-decoration: none;
+}
+
+.logo-mark {
+  width: 36px;
+  height: 36px;
+  background: var(--maroon);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 18px;
+  box-shadow: 0 4px 14px var(--maroon-glow);
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.logo-text span { color: var(--maroon); }
+
+.nav-cta {
+  background: var(--maroon);
+  color: white;
+  padding: 9px 20px;
+  border-radius: 30px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px var(--maroon-glow);
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.nav-cta:hover {
+  background: var(--maroon-d);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--maroon-glow);
+}
+
+/* ── HERO ── */
+.hero {
+  padding: 80px 24px 70px;
+  position: relative;
+  overflow: hidden;
+  background: var(--cream);
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 600px; height: 600px;
+  background: radial-gradient(circle, rgba(138,21,56,0.06) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(138,21,56,0.04) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-wrapper {
+  max-width: 760px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: var(--maroon-light);
+  border: 1px solid rgba(138,21,56,0.15);
+  color: var(--maroon);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  padding: 6px 16px;
+  border-radius: 30px;
+  margin-bottom: 28px;
+  animation: fadeDown 0.5s ease both;
+}
+
+.hero-badge-dot {
+  width: 6px; height: 6px;
+  background: var(--maroon);
+  border-radius: 50%;
+  animation: pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% { opacity:1; transform:scale(1); }
+  50%      { opacity:0.5; transform:scale(0.7); }
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(36px, 6vw, 62px);
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+  margin-bottom: 22px;
+  animation: fadeUp 0.6s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--maroon);
+}
+
+.hero p {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 580px;
+  margin: 0 auto 40px;
+  line-height: 1.75;
+  font-weight: 400;
+  animation: fadeUp 0.6s ease 0.2s both;
+}
+
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.3s both;
+}
+
+.btn-primary {
+  background: var(--maroon);
+  color: white;
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 24px var(--maroon-glow);
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.btn-primary:hover {
+  background: var(--maroon-d);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px var(--maroon-glow);
+}
+
+.btn-secondary {
+  background: var(--white);
+  color: var(--maroon);
+  padding: 14px 32px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  border: 1.5px solid rgba(138,21,56,0.25);
+  transition: all 0.25s ease;
+  display: inline-block;
+}
+
+.btn-secondary:hover {
+  border-color: var(--maroon);
+  background: var(--maroon-light);
+  transform: translateY(-2px);
+}
+
+/* ── HERO STATS ── */
+.hero-stats {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--border);
+  flex-wrap: wrap;
+  animation: fadeUp 0.6s ease 0.4s both;
+}
+
+.stat {
+  text-align: center;
+}
+
+.stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 800;
+  color: var(--maroon);
+  letter-spacing: -0.03em;
+  display: block;
+}
+
+.stat-lbl {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin-top: 2px;
+}
+
+/* ── NAV CARD MENU ── */
+.top-menu {
+  padding: 40px 20px;
+  background: var(--cream-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-label {
+  text-align: center;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--muted);
+  margin-bottom: 20px;
+}
+
+.menu-container {
+  max-width: 640px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.menu-card {
+  background: var(--white);
+  padding: 18px 14px;
+  border-radius: 18px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+  transition: all 0.22s ease;
+  text-align: center;
+  letter-spacing: -0.01em;
+}
+
+.menu-card .menu-emoji {
+  font-size: 22px;
+  line-height: 1;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 28px var(--maroon-glow);
+  border-color: rgba(138,21,56,0.25);
+  color: var(--maroon);
+}
+
+.menu-card.register-card {
+  background: var(--maroon);
+  color: white;
+  border-color: var(--maroon);
+  box-shadow: 0 4px 18px var(--maroon-glow);
+  grid-column: span 3;
+  flex-direction: row;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px;
+}
+
+.menu-card.register-card:hover {
+  background: var(--maroon-d);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 10px 28px var(--maroon-glow);
+}
+
+/* ── WHAT IS SECTION ── */
+.section {
+  padding: 80px 0;
+}
+
+.section.light {
+  background: var(--white);
+}
+
+.container {
+  max-width: 1100px;
+  margin: auto;
+  padding: 0 24px;
+}
+
+.container.narrow {
+  max-width: 720px;
+}
+
+.what-is-box {
+  background: var(--cream);
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  padding: 52px 48px;
+  position: relative;
+  overflow: hidden;
+}
+
+.what-is-box::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 5px; height: 100%;
+  background: var(--maroon);
+  border-radius: 28px 0 0 28px;
+}
+
+.what-is-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 34px;
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
+}
+
+.what-is-box p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+  margin-bottom: 16px;
+}
+
+.what-is-box p:last-child { margin-bottom: 0; }
+
+/* ── SECTION HEADER ── */
+.section-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.section-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--maroon);
+  background: var(--maroon-light);
+  border: 1px solid rgba(138,21,56,0.15);
+  padding: 5px 14px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 4vw, 42px);
+  font-weight: 800;
+  color: var(--text);
+  letter-spacing: -0.03em;
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  max-width: 500px;
+  margin: auto;
+}
+
+/* ── STEPS GRID ── */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.step-card {
+  background: var(--white);
+  padding: 36px 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.04);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--maroon);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.step-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px var(--maroon-glow);
+  border-color: rgba(138,21,56,0.2);
+}
+
+.step-card:hover::after { opacity: 1; }
+
+.step-number {
+  width: 46px; height: 46px;
+  border-radius: 14px;
+  background: var(--maroon-light);
+  color: var(--maroon);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  font-size: 18px;
+  margin-bottom: 20px;
+  border: 1px solid rgba(138,21,56,0.15);
+  font-family: 'Playfair Display', serif;
+}
+
+.step-card h3 {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.step-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── FEATURE GRID ── */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--cream);
+  padding: 36px 30px;
+  border-radius: 24px;
+  border: 1px solid var(--border);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 24px; left: 30px;
+  width: 36px; height: 4px;
+  background: var(--maroon);
+  border-radius: 4px;
+  opacity: 0.5;
+  transition: opacity 0.3s, width 0.3s;
+}
+
+.feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 36px var(--maroon-glow);
+  border-color: rgba(138,21,56,0.2);
+  background: var(--white);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+  width: 56px;
+}
+
+.feature-card h3 {
+  font-size: 17px;
+  font-weight: 800;
+  color: var(--text);
+  margin-top: 28px;
+  margin-bottom: 10px;
+  letter-spacing: -0.02em;
+}
+
+.feature-card p {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* ── CTA SECTION ── */
+.cta-section {
+  background: var(--cream-2);
+  padding: 80px 24px;
+}
+
+.cta-box {
+  max-width: 700px;
+  margin: auto;
+  background: var(--maroon);
+  border-radius: 32px;
+  padding: 60px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 20px 60px var(--maroon-glow);
+}
+
+.cta-box::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 280px; height: 280px;
+  background: rgba(255,255,255,0.05);
+  border-radius: 50%;
+}
+
+.cta-box::after {
+  content: '';
+  position: absolute;
+  bottom: -60px; left: -60px;
+  width: 220px; height: 220px;
+  background: rgba(255,255,255,0.04);
+  border-radius: 50%;
+}
+
+.cta-box h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 4vw, 38px);
+  font-weight: 800;
+  color: white;
+  letter-spacing: -0.03em;
+  margin-bottom: 14px;
+  position: relative; z-index: 1;
+}
+
+.cta-box p {
+  color: rgba(255,255,255,0.75);
+  font-size: 16px;
+  margin-bottom: 36px;
+  position: relative; z-index: 1;
+}
+
+.cta-box .large-btn {
+  background: white;
+  color: var(--maroon);
+  padding: 16px 38px;
+  border-radius: 50px;
+  font-weight: 800;
+  font-size: 13px;
+  text-decoration: none;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  display: inline-block;
+  box-shadow: 0 6px 24px rgba(0,0,0,0.15);
+  transition: all 0.25s ease;
+  position: relative; z-index: 1;
+}
+
+.cta-box .large-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px rgba(0,0,0,0.2);
+}
+
+/* ── FOOTER ── */
+.footer {
+  background: var(--white);
+  padding: 40px 24px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+}
+
+.footer-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.footer-logo-mark {
+  width: 28px; height: 28px;
+  background: var(--maroon);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-weight: 800;
+  font-size: 14px;
+}
+
+.footer-logo-text {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.02em;
+}
+
+.footer p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+}
+
+.footer .small {
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 6px;
+}
+
+/* ── TEXT CENTER ── */
+.text-center { text-align: center; }
+
+/* ── ANIMATIONS ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 640px) {
+  .hero { padding: 60px 20px 50px; }
+
+  .what-is-box {
+    padding: 36px 24px 36px 32px;
+  }
+
+  .what-is-box h2 { font-size: 26px; }
+
+  .menu-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .menu-card { font-size: 11px; padding: 14px 10px; }
+  .menu-card .menu-emoji { font-size: 18px; }
+  .menu-card.register-card { grid-column: span 3; }
+
+  .cta-box { padding: 40px 24px; }
+
+  .step-card, .feature-card { padding: 28px 22px; }
+
+  .hero-stats { gap: 24px; }
+}
+
+@media (max-width: 380px) {
+  .menu-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .menu-card.register-card { grid-column: span 2; }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<header class="navbar">
+  <div class="nav-container">
+    <a class="logo" href="#">
+      <div class="logo-mark">L</div>
+      <span class="logo-text">Link <span>For You</span></span>
+    </a>
+    <a href="register.html" class="nav-cta">Register Vehicle</a>
+  </div>
+</header>
+
+
+<!-- ================= HERO ================= -->
+<section class="hero">
+  <div class="container hero-wrapper">
+
+    <div class="hero-badge">
+      <div class="hero-badge-dot"></div>
+      Smart QR Vehicle Safety · India
+    </div>
+
+    <h1>
+      Scan QR to Contact<br>
+      <em>Vehicle Owner</em>
+    </h1>
+
+    <p>
+      Link For You is a simple and secure QR based system that allows anyone
+      to contact a vehicle owner instantly during parking issues or
+      emergency situations — without displaying phone numbers publicly.
+    </p>
+
+    <div class="hero-actions">
+      <a href="register.html" class="btn-primary">Register Your Vehicle</a>
+      <a href="#how" class="btn-secondary">See How It Works</a>
+    </div>
+
+    <div class="hero-stats">
+      <div class="stat">
+        <span class="stat-num">100%</span>
+        <span class="stat-lbl">Private</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">0</span>
+        <span class="stat-lbl">Apps Needed</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">5000+</span>
+        <span class="stat-lbl">Users</span>
+      </div>
+      <div class="stat">
+        <span class="stat-num">₹199</span>
+        <span class="stat-lbl">One Time</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ================= NAV CARD MENU ================= -->
+<section class="top-menu">
+  <div class="menu-label">Quick Navigation</div>
+  <div class="menu-container">
+
+    <a href="#how" class="menu-card">
+      <span class="menu-emoji">⚙️</span>
+      How it works
+    </a>
+
+    <a href="about.html" class="menu-card">
+      <span class="menu-emoji">📄</span>
+      About
+    </a>
+
+    <a href="business.html" class="menu-card">
+      <span class="menu-emoji">💼</span>
+      Business
+    </a>
+
+    <a href="trust.html" class="menu-card">
+      <span class="menu-emoji">🛡</span>
+      Trust
+    </a>
+
+    <a href="privacy.html" class="menu-card">
+      <span class="menu-emoji">🔒</span>
+      Privacy
+    </a>
+
+    <a href="register.html" class="menu-card register-card">
+      <span class="menu-emoji">🚗</span>
+      Register Vehicle
+    </a>
+
+  </div>
+</section>
+
+
+<!-- ================= WHAT IS ================= -->
+<section class="section light">
+  <div class="container narrow">
+    <div class="what-is-box">
+      <h2>What is Link For You?</h2>
+      <p>
+        Link For You is designed for modern cities where privacy, safety and quick
+        communication matter. Instead of writing phone numbers on vehicles,
+        owners place a unique QR sticker that anyone can scan to reach them
+        during genuine parking or emergency situations.
+      </p>
+      <p>
+        Vehicle owners voluntarily register their contact details once.
+        After registration, the QR works automatically — no apps, no logins,
+        no tracking, and no misuse for marketing or spam.
+      </p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= HOW IT WORKS ================= -->
+<section class="section" id="how">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-tag">Simple Process</div>
+      <h2>How It Works</h2>
+      <p class="section-sub">A simple 3-step process to stay reachable while protecting privacy.</p>
+    </div>
+
+    <div class="steps-grid">
+
+      <div class="step-card">
+        <div class="step-number">1</div>
+        <h3>Register Once</h3>
+        <p>The vehicle owner registers their vehicle number, mobile number, and optional business profile details on Link For You.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">2</div>
+        <h3>Paste QR Sticker</h3>
+        <p>A unique QR sticker is placed on the vehicle. No personal information is visible publicly.</p>
+      </div>
+
+      <div class="step-card">
+        <div class="step-number">3</div>
+        <h3>Scan & Connect</h3>
+        <p>Anyone facing a parking issue or emergency scans the QR and connects with the vehicle owner instantly through the website.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= WHY SECTION ================= -->
+<section class="section light">
+  <div class="container">
+
+    <div class="section-header">
+      <div class="section-tag">Why Choose Us</div>
+      <h2>Why Link For You?</h2>
+      <p class="section-sub">Built for privacy, safety and real-world urban situations.</p>
+    </div>
+
+    <div class="feature-grid">
+
+      <div class="feature-card">
+        <h3>Privacy First</h3>
+        <p>Your phone number is never printed on the vehicle. It is shared only when someone scans the QR for a genuine reason.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Emergency Use Only</h3>
+        <p>The system is strictly meant for parking assistance and emergency communication. Promotional or spam usage is discouraged.</p>
+      </div>
+
+      <div class="feature-card">
+        <h3>Business Visibility</h3>
+        <p>Vehicle owners can optionally add their profession or business description, helping them gain visibility without exposing privacy.</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ================= CTA ================= -->
+<section class="cta-section">
+  <div class="cta-box">
+    <h2>Ready to activate your QR?</h2>
+    <p>Register once and stay reachable without exposing your number publicly.</p>
+    <a href="register.html" class="large-btn">Register Your Vehicle</a>
+  </div>
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+  <div class="container text-center">
+
+    <div class="footer-logo">
+      <div class="footer-logo-mark">L</div>
+      <span class="footer-logo-text">Link For You</span>
+    </div>
+
+    <p>© 2026 Link For You — QR Based Vehicle Contact System</p>
+    <p class="small">Parking &amp; emergency use only. Misuse is not supported.</p>
+
+  </div>
+</footer>
+
+
+<!-- ================= SERVICE WORKER ================= -->
+<script>
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('./service-worker.js')
+    .then(function(reg){
+      console.log("Service Worker Registered", reg);
+    }).catch(function(err){
+      console.log("Service Worker Error", err);
+    });
+  });
+}
+</script>
+
+</body>
+</html>
