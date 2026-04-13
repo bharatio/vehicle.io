@@ -1,0 +1,1068 @@
+/* ======================================================
+   LINK FOR YOU — Premium Style
+   Canacot Systems · Maroon × Cream × White
+   Drop-in replacement — no HTML changes needed
+   Version 2.0
+====================================================== */
+
+/* ===================================================
+   1. GOOGLE FONTS IMPORT
+=================================================== */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800;900&family=DM+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+
+/* ===================================================
+   2. DESIGN TOKENS
+=================================================== */
+:root {
+  /* Brand Colors */
+  --maroon:         #8A1538;
+  --maroon-d:       #6e102d;
+  --maroon-light:   rgba(138, 21, 56, 0.07);
+  --maroon-mid:     rgba(138, 21, 56, 0.14);
+  --maroon-glow:    rgba(138, 21, 56, 0.20);
+
+  /* Backgrounds */
+  --bg:             #FAF7F4;
+  --bg-2:           #F2EDE8;
+  --bg-3:           #EDE5DC;
+  --white:          #ffffff;
+
+  /* Text */
+  --text:           #1A1A1A;
+  --text-2:         #3A3A3A;
+  --muted:          #6B6B6B;
+  --subtle:         #A0A0A0;
+
+  /* Borders */
+  --border:         #E2D9D0;
+  --border-light:   #EDE8E2;
+
+  /* Spacing & Shape */
+  --radius:         18px;
+  --radius-lg:      26px;
+  --radius-xl:      40px;
+
+  /* Shadows */
+  --shadow:         0 4px 20px rgba(138,21,56,0.07);
+  --shadow-2:       0 12px 40px rgba(138,21,56,0.13);
+  --shadow-soft:    0 2px 16px rgba(0,0,0,0.05);
+
+  /* Typography */
+  --font-display:   'Playfair Display', Georgia, serif;
+  --font-body:      'DM Sans', -apple-system, sans-serif;
+
+  /* Legacy aliases so old vars still work */
+  --primary:        #8A1538;
+  --primary-dark:   #6e102d;
+  --navy:           #8A1538;
+}
+
+/* ===================================================
+   3. BASE RESET
+=================================================== */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  transition: color 0.2s ease;
+}
+
+/* ===================================================
+   4. TYPOGRAPHY
+=================================================== */
+h1, h2, h3 {
+  font-family: var(--font-display);
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  color: var(--text);
+}
+
+h1 { font-size: clamp(32px, 5.5vw, 56px); font-weight: 900; }
+h2 { font-size: clamp(26px, 4vw, 40px);   font-weight: 800; margin-bottom: 16px; }
+h3 { font-size: clamp(18px, 2.5vw, 22px); font-weight: 700; margin-bottom: 10px; }
+
+p {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.8;
+}
+
+/* ===================================================
+   5. LAYOUT HELPERS
+=================================================== */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.container.narrow {
+  max-width: 720px;
+}
+
+.text-center { text-align: center; }
+.small       { font-size: 12px; color: var(--subtle); }
+
+/* ===================================================
+   6. SECTION
+=================================================== */
+.section {
+  padding: 88px 0;
+}
+
+.section.light {
+  background: var(--white);
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 56px;
+}
+
+.section-header h2 {
+  margin-bottom: 12px;
+}
+
+.section-sub {
+  font-size: 16px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+/* Section label pill */
+.section-tag {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: var(--maroon);
+  background: var(--maroon-light);
+  border: 1px solid var(--maroon-mid);
+  padding: 5px 15px;
+  border-radius: 30px;
+  margin-bottom: 14px;
+}
+
+/* ===================================================
+   7. NAVBAR
+=================================================== */
+.navbar {
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  background: rgba(255, 255, 255, 0.97);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--border-light);
+  box-shadow: 0 1px 0 var(--border-light), 0 4px 24px rgba(0,0,0,0.04);
+}
+
+.nav-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 20px;
+  height: 62px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Logo */
+.logo {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: -0.04em;
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.logo span {
+  color: var(--maroon);
+}
+
+/* Nav links */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+nav a {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--muted);
+  text-decoration: none;
+  padding: 7px 14px;
+  border-radius: 30px;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+nav a:hover,
+nav a.active {
+  color: var(--maroon);
+  background: var(--maroon-light);
+}
+
+.btn-small {
+  background: var(--maroon) !important;
+  color: white !important;
+  padding: 8px 20px;
+  border-radius: 30px;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  text-decoration: none;
+  box-shadow: 0 4px 16px var(--maroon-glow);
+  transition: all 0.22s ease;
+  white-space: nowrap;
+}
+
+.btn-small:hover {
+  background: var(--maroon-d) !important;
+  transform: translateY(-1px);
+  box-shadow: 0 6px 22px var(--maroon-glow);
+}
+
+/* ===================================================
+   8. HERO
+=================================================== */
+.hero {
+  padding: 100px 20px 90px;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle radial glow */
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -100px; right: -150px;
+  width: 700px; height: 700px;
+  background: radial-gradient(circle, rgba(138,21,56,0.055) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -100px; left: -100px;
+  width: 500px; height: 500px;
+  background: radial-gradient(circle, rgba(138,21,56,0.035) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-wrapper {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+}
+
+.hero h1 {
+  margin-bottom: 20px;
+  animation: fadeUp 0.65s ease 0.1s both;
+}
+
+.hero h1 em {
+  font-style: normal;
+  color: var(--maroon);
+}
+
+.hero p {
+  font-size: 17px;
+  max-width: 580px;
+  margin: 0 auto 40px;
+  animation: fadeUp 0.65s ease 0.2s both;
+}
+
+/* Hero action buttons */
+.hero-actions {
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  animation: fadeUp 0.65s ease 0.3s both;
+}
+
+/* ===================================================
+   9. BUTTONS
+=================================================== */
+.btn-primary {
+  display: inline-block;
+  background: var(--maroon);
+  color: white;
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  box-shadow: 0 6px 24px var(--maroon-glow);
+  transition: all 0.25s ease;
+  border: none;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn-primary:hover {
+  background: var(--maroon-d);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px var(--maroon-glow);
+  color: white;
+}
+
+.btn-primary:active { transform: scale(0.97); }
+
+.btn-primary.large-btn {
+  padding: 18px 44px;
+  font-size: 14px;
+}
+
+.btn-secondary {
+  display: inline-block;
+  background: var(--white);
+  color: var(--maroon);
+  padding: 15px 34px;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 13px;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  border: 1.5px solid rgba(138,21,56,0.28);
+  transition: all 0.25s ease;
+  white-space: nowrap;
+}
+
+.btn-secondary:hover {
+  background: var(--maroon-light);
+  border-color: var(--maroon);
+  transform: translateY(-2px);
+}
+
+/* ===================================================
+   10. MENU CARDS (nav card section)
+=================================================== */
+.top-menu {
+  padding: 36px 20px;
+  background: var(--bg-2);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+}
+
+.menu-container {
+  max-width: 580px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.menu-card {
+  background: var(--white);
+  padding: 18px 12px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.22s ease;
+  text-align: center;
+  min-height: 76px;
+}
+
+.menu-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px var(--maroon-glow);
+  border-color: rgba(138,21,56,0.22);
+  color: var(--maroon);
+}
+
+.menu-card.register-card {
+  grid-column: span 3;
+  background: var(--maroon);
+  color: white;
+  border-color: var(--maroon);
+  box-shadow: 0 6px 24px var(--maroon-glow);
+  flex-direction: row;
+  gap: 10px;
+  min-height: 56px;
+}
+
+.menu-card.register-card:hover {
+  background: var(--maroon-d);
+  color: white;
+  transform: translateY(-3px);
+  box-shadow: 0 12px 32px var(--maroon-glow);
+}
+
+/* ===================================================
+   11. STEP CARDS
+=================================================== */
+.steps-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.step-card {
+  background: var(--white);
+  padding: 36px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-soft);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.step-card::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--maroon), var(--maroon-d));
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.step-card:hover {
+  transform: translateY(-7px);
+  box-shadow: var(--shadow-2);
+  border-color: rgba(138,21,56,0.18);
+}
+
+.step-card:hover::after { opacity: 1; }
+
+.step-number {
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+  background: var(--maroon-light);
+  color: var(--maroon);
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+  border: 1px solid var(--maroon-mid);
+}
+
+.step-card h3 {
+  color: var(--text);
+  margin-bottom: 10px;
+}
+
+.step-card p {
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* ===================================================
+   12. FEATURE CARDS
+=================================================== */
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+}
+
+.feature-card {
+  background: var(--bg);
+  padding: 36px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  position: relative;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Maroon accent bar */
+.feature-card::before {
+  content: '';
+  position: absolute;
+  top: 26px; left: 28px;
+  width: 32px; height: 4px;
+  background: var(--maroon);
+  border-radius: 4px;
+  opacity: 0.45;
+  transition: opacity 0.3s, width 0.3s;
+}
+
+.feature-card:hover {
+  background: var(--white);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-2);
+  border-color: rgba(138,21,56,0.18);
+}
+
+.feature-card:hover::before {
+  opacity: 1;
+  width: 52px;
+}
+
+.feature-card h3 {
+  margin-top: 30px;
+  color: var(--text);
+}
+
+.feature-card p {
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+/* ===================================================
+   13. OWNER / PROFILE CARD  ← KEY SECTION
+=================================================== */
+.owner-card {
+  background: var(--white);
+  max-width: 520px;
+  margin: 32px auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-2);
+  overflow: hidden;
+
+  /* Stagger-in animation */
+  animation: cardRise 0.5s cubic-bezier(0.34,1.1,0.64,1) both;
+}
+
+/* Maroon header stripe on profile card */
+.owner-card::before {
+  content: '';
+  display: block;
+  height: 5px;
+  background: linear-gradient(90deg, var(--maroon) 0%, #c0385a 100%);
+}
+
+/* Card body padding wrapper */
+.owner-card > *:not(.owner-card::before) {
+  padding: 0 30px;
+}
+
+/* Override padding directly on inner children */
+.owner-card h2,
+.owner-card h3 {
+  padding: 28px 30px 0;
+  margin-bottom: 6px;
+  font-size: 22px;
+  color: var(--text);
+}
+
+/* ===================================================
+   14. INFO ROWS (inside owner card)
+=================================================== */
+.info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 14px 30px;
+  border-bottom: 1px solid var(--border-light);
+  transition: background 0.2s;
+}
+
+.info-row:hover {
+  background: var(--bg);
+}
+
+.info-row:last-of-type {
+  border-bottom: none;
+}
+
+/* Multi-line info row (for "About") */
+.info-row.block {
+  flex-direction: column;
+  gap: 6px;
+}
+
+.label {
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: var(--subtle);
+}
+
+.value {
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--text);
+  text-align: right;
+  line-height: 1.5;
+}
+
+.info-row.block .value {
+  text-align: left;
+  font-weight: 400;
+  color: var(--text-2);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+/* ===================================================
+   15. ACTION BUTTONS (Call / WhatsApp / Email)
+=================================================== */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px 30px 30px;
+}
+
+/* All action links inside .action-buttons */
+.action-buttons a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px 20px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  transition: all 0.22s ease;
+  border: 1.5px solid transparent;
+}
+
+/* Primary action — CALL */
+.action-buttons a:first-child {
+  background: var(--maroon);
+  color: white;
+  border-color: var(--maroon);
+  box-shadow: 0 6px 20px var(--maroon-glow);
+}
+
+.action-buttons a:first-child:hover {
+  background: var(--maroon-d);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 28px var(--maroon-glow);
+}
+
+/* Secondary actions — WhatsApp, Email */
+.action-buttons a:not(:first-child) {
+  background: var(--white);
+  color: var(--maroon);
+  border-color: rgba(138,21,56,0.25);
+}
+
+.action-buttons a:not(:first-child):hover {
+  background: var(--maroon-light);
+  border-color: var(--maroon);
+  transform: translateY(-2px);
+}
+
+/* ===================================================
+   16. FORM CARD
+=================================================== */
+.form-card {
+  background: var(--white);
+  padding: 40px 36px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-2);
+  max-width: 540px;
+  margin: 48px auto;
+}
+
+.form-card h2,
+.form-card h3 {
+  margin-bottom: 24px;
+}
+
+/* Labels */
+label {
+  display: block;
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--muted);
+  margin-bottom: 7px;
+}
+
+input,
+textarea,
+select {
+  width: 100%;
+  padding: 13px 16px;
+  border-radius: 12px;
+  border: 1.5px solid var(--border);
+  font-size: 15px;
+  font-family: var(--font-body);
+  background: var(--bg);
+  color: var(--text);
+  margin-bottom: 18px;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+  appearance: none;
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--subtle);
+}
+
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: var(--maroon);
+  background: var(--white);
+  box-shadow: 0 0 0 3px var(--maroon-light);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+/* ===================================================
+   17. CTA SECTION
+=================================================== */
+.cta-section {
+  background: var(--bg-2);
+  padding: 80px 24px;
+  text-align: center;
+}
+
+.cta-section .container {
+  max-width: 680px;
+}
+
+.cta-section h2 {
+  margin-bottom: 12px;
+}
+
+.cta-section p {
+  margin-bottom: 36px;
+}
+
+/* ===================================================
+   18. FOOTER
+=================================================== */
+.footer {
+  background: var(--white);
+  padding: 48px 20px 32px;
+  border-top: 1px solid var(--border-light);
+  text-align: center;
+}
+
+/* Logo in footer */
+.footer .logo {
+  justify-content: center;
+  margin-bottom: 16px;
+  font-size: 18px;
+}
+
+.footer p {
+  font-size: 13px;
+  color: var(--muted);
+  margin-bottom: 4px;
+  line-height: 1.6;
+}
+
+.footer .small {
+  font-size: 11px;
+  color: #C0B8B0;
+  margin-top: 8px;
+}
+
+.footer a {
+  color: var(--maroon);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ===================================================
+   19. NOTICE / DISCLAIMER BLOCK
+       (the grey text block under profile card)
+=================================================== */
+.notice-block,
+.disclaimer {
+  max-width: 520px;
+  margin: 0 auto 32px;
+  padding: 20px 24px;
+  background: var(--bg-2);
+  border: 1px solid var(--border-light);
+  border-radius: var(--radius);
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+}
+
+.notice-block p + p,
+.disclaimer p + p {
+  margin-top: 10px;
+}
+
+/* Bare paragraphs right after .owner-card (disclaimer text in screenshots) */
+.owner-card + p,
+.owner-card + p + p,
+.owner-card + p + p + p {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 6px 0;
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.75;
+  text-align: center;
+}
+
+/* ===================================================
+   20. FLOAT / WHATSAPP BUTTON
+=================================================== */
+.order-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #25D366;
+  color: white;
+  padding: 14px 22px;
+  border-radius: 50px;
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  box-shadow: 0 6px 24px rgba(37,211,102,0.4);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1px;
+  z-index: 999;
+  transition: all 0.25s ease;
+}
+
+.order-float:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 30px rgba(37,211,102,0.5);
+}
+
+.order-float span {
+  font-size: 10px;
+  font-weight: 600;
+  opacity: 0.88;
+  display: block;
+}
+
+/* ===================================================
+   21. PRIVACY PAGE STYLES
+=================================================== */
+.privacy-hero {
+  padding: 60px 20px 40px;
+  text-align: center;
+  background: var(--bg);
+}
+
+.privacy-hero h1 {
+  font-size: clamp(26px, 5vw, 42px);
+  margin-bottom: 12px;
+}
+
+.privacy-hero p {
+  max-width: 540px;
+  margin: 0 auto;
+}
+
+.privacy-section {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0 20px 60px;
+}
+
+.privacy-section h2 {
+  font-size: 22px;
+  margin: 40px 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--maroon-light);
+}
+
+.privacy-section p {
+  font-size: 15px;
+  margin-bottom: 14px;
+  line-height: 1.85;
+}
+
+/* ===================================================
+   22. UTILITY CLASSES
+=================================================== */
+
+/* Maroon accent underline */
+.accent-line {
+  width: 44px;
+  height: 4px;
+  background: var(--maroon);
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/* Pill / badge */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--maroon-light);
+  border: 1px solid var(--maroon-mid);
+  color: var(--maroon);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  padding: 4px 13px;
+  border-radius: 20px;
+}
+
+/* Card generic */
+.card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border-light);
+  box-shadow: var(--shadow-soft);
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-4px);
+}
+
+/* ===================================================
+   23. ANIMATIONS
+=================================================== */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(22px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes cardRise {
+  from { opacity: 0; transform: translateY(30px) scale(0.98); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.fade-up { animation: fadeUp 0.6s ease both; }
+.fade-in { animation: fadeIn 0.5s ease both; }
+
+/* ===================================================
+   24. RESPONSIVE
+=================================================== */
+@media (max-width: 768px) {
+  .hero { padding: 72px 16px 60px; }
+
+  .section { padding: 60px 0; }
+
+  nav {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 4px;
+    margin-top: 8px;
+  }
+
+  nav a {
+    font-size: 11px;
+    padding: 6px 10px;
+    margin: 0;
+  }
+
+  .hero-actions { flex-direction: column; align-items: center; }
+
+  .step-card,
+  .feature-card { padding: 28px 22px; }
+
+  .form-card { padding: 28px 22px; }
+
+  .menu-container {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+  }
+
+  .menu-card { font-size: 12px; padding: 14px 8px; min-height: 68px; }
+}
+
+@media (max-width: 480px) {
+  h2 { font-size: 24px; }
+  h3 { font-size: 18px; }
+  p  { font-size: 15px; }
+
+  .section { padding: 48px 0; }
+
+  .owner-card h2,
+  .owner-card h3 { padding: 22px 20px 0; font-size: 18px; }
+
+  .info-row { padding: 12px 20px; }
+
+  .action-buttons { padding: 20px 20px 24px; }
+
+  .btn-primary,
+  .btn-secondary { padding: 13px 26px; font-size: 12px; }
+
+  .menu-container { grid-template-columns: repeat(2, 1fr); }
+
+  .menu-card.register-card { grid-column: span 2; }
+
+  .order-float { bottom: 16px; right: 16px; padding: 12px 18px; }
+}
+
+/* ===================================================
+   25. SCROLLBAR (subtle)
+=================================================== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--bg-2); }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(138,21,56,0.3); }
